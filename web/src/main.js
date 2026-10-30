@@ -136,6 +136,7 @@ loadSubjects()
 // ---- movement + camera follow + proximity check ----
 const clock = new THREE.Clock()
 const PROXIMITY = 3.2
+let quizOpen = false
 
 function animate() {
   const dt = Math.min(clock.getDelta(), 0.05)
@@ -179,7 +180,6 @@ function animate() {
 }
 animate()
 
-let quizOpen = false
 async function enterBuilding(subject) {
   if (!nickname) { nicknameScreen.classList.remove('hidden'); return }
   quizOpen = true
