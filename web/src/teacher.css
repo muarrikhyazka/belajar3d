@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background: #0b0e1a; color: #e5e7eb; }
-.screen.hidden { display: none; }
+.screen.hidden { display: none !important; }
 #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
 .card { background: #171b2e; border: 1px solid #2c3350; border-radius: 16px; padding: 2rem; width: 320px; text-align: center; }
 .card input { width: 100%; padding: .7rem; margin-bottom: .7rem; border-radius: 8px; border: 1px solid #2c3350; background: #0f1222; color: #e5e7eb; }
@@ -9,12 +9,20 @@ body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background: #0
 .error { color: #f87171; font-size: .85rem; min-height: 1.2em; }
 .back-link { color: #818cf8; font-size: .85rem; text-decoration: none; }
 
-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid #2c3350; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid #2c3350; flex-wrap: wrap; gap: .5rem; }
+header h1 { font-size: 1.1rem; margin: 0; }
 header a { color: #818cf8; margin-right: 1rem; text-decoration: none; }
 button.secondary { background: transparent; border: 1px solid #2c3350; color: #9ca3af; }
 
 main { padding: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-@media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; padding: 1rem; gap: 1rem; } }
+@media (max-width: 480px) {
+  header { padding: .8rem 1rem; }
+  header h1 { font-size: .95rem; }
+  .panel { padding: 1rem; }
+  .item-row { flex-wrap: wrap; }
+  .item-row span { word-break: break-word; max-width: 100%; }
+}
 
 .panel { background: #171b2e; border: 1px solid #2c3350; border-radius: 12px; padding: 1.2rem; }
 .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }

@@ -11,22 +11,49 @@ let subjects = []
 let activeSubject = null
 
 // ---- auth ----
-document.getElementById('login-btn').onclick = async () => {
+const loginBtn = document.getElementById('login-btn')
+const loginError = document.getElementById('login-error')
+
+loginBtn.onclick = async () => {
   const email = document.getElementById('login-email').value.trim()
   const password = document.getElementById('login-password').value
+  loginError.textContent = ''
+  if (!email || !password) {
+    loginError.textContent = 'Isi email dan kata sandi dulu.'
+    return
+  }
+  loginBtn.disabled = true
+  loginBtn.textContent = 'Masuk...'
   try {
     await api.login(email, password)
-    showApp()
+    await showApp()
   } catch (e) {
-    document.getElementById('login-error').textContent = 'Email atau kata sandi salah'
+    // Surface the real cause instead of a generic message, so a network/
+    // server error isn't confused with a wrong password.
+    loginError.textContent = describeLoginError(e)
+  } finally {
+    loginBtn.disabled = false
+    loginBtn.textContent = 'Masuk'
   }
 }
+
+function describeLoginError(e) {
+  const msg = (e && e.message) || ''
+  if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('fetch')) {
+    return 'Tidak bisa terhubung ke server. Cek koneksi internet lalu coba lagi.'
+  }
+  if (msg.includes('invalid credentials') || msg.includes('401')) {
+    return 'Email atau kata sandi salah.'
+  }
+  return `Gagal login: ${msg || 'terjadi kesalahan tidak terduga'}`
+}
+
 document.getElementById('logout-btn').onclick = async () => { await api.logout(); location.reload() }
 
 async function boot() {
   try {
     await api.me()
-    showApp()
+    await showApp()
   } catch {
     loginScreen.classList.remove('hidden')
     appScreen.classList.add('hidden')
@@ -35,7 +62,11 @@ async function boot() {
 async function showApp() {
   loginScreen.classList.add('hidden')
   appScreen.classList.remove('hidden')
-  await loadSubjects()
+  try {
+    await loadSubjects()
+  } catch (e) {
+    subjectList.innerHTML = `<p style="color:#f87171;font-size:.85rem">Gagal memuat data: ${e.message}</p>`
+  }
 }
 
 // ---- subjects ----

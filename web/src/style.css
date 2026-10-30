@@ -50,4 +50,12 @@ html, body { margin: 0; height: 100%; overflow: hidden; font-family: 'Segoe UI',
 
 @media (max-width: 700px) {
   .panel { padding: 1.5rem; }
+  .panel h1 { font-size: 1.4rem; }
+  .quiz-panel { max-height: 85vh; overflow-y: auto; }
+  #quiz-prompt { font-size: 1rem; }
+  #hud-top { max-width: 180px; }
+}
+@media (max-width: 420px) {
+  .panel { padding: 1.1rem; width: 94%; }
+  #hud { padding: .6rem; }
 }
