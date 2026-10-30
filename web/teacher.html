@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belajar3D - Mode Guru</title>
+  <link rel="stylesheet" href="./src/teacher.css" />
+</head>
+<body>
+  <div id="login-screen" class="screen">
+    <div class="card">
+      <h1>👩‍🏫 Mode Guru</h1>
+      <input id="login-email" placeholder="Email" />
+      <input id="login-password" type="password" placeholder="Kata sandi" />
+      <button id="login-btn">Masuk</button>
+      <div id="login-error" class="error"></div>
+      <a href="/" class="back-link">◀ Kembali ke game</a>
+    </div>
+  </div>
+
+  <div id="app-screen" class="screen hidden">
+    <header>
+      <h1>👩‍🏫 Belajar3D - Mode Guru</h1>
+      <div>
+        <a href="/" target="_blank">▶ Lihat Game</a>
+        <button id="logout-btn" class="secondary">Keluar</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Gedung Mapel</h2>
+          <button id="add-subject-btn">+ Gedung Baru</button>
+        </div>
+        <div id="subject-list"></div>
+      </section>
+
+      <section class="panel" id="question-panel" style="display:none">
+        <div class="panel-header">
+          <h2 id="question-panel-title">Soal</h2>
+          <button id="add-question-btn">+ Soal Baru</button>
+        </div>
+        <div id="question-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/teacher.js"></script>
+</body>
+</html>

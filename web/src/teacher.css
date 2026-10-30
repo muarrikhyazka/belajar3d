@@ -1,0 +1,33 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background: #0b0e1a; color: #e5e7eb; }
+.screen.hidden { display: none; }
+#login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.card { background: #171b2e; border: 1px solid #2c3350; border-radius: 16px; padding: 2rem; width: 320px; text-align: center; }
+.card input { width: 100%; padding: .7rem; margin-bottom: .7rem; border-radius: 8px; border: 1px solid #2c3350; background: #0f1222; color: #e5e7eb; }
+.card button, main button { padding: .6rem 1rem; border-radius: 8px; border: none; cursor: pointer; background: linear-gradient(90deg,#818cf8,#c084fc); color: #0b0e1a; font-weight: 700; }
+.card button { width: 100%; margin-bottom: .6rem; }
+.error { color: #f87171; font-size: .85rem; min-height: 1.2em; }
+.back-link { color: #818cf8; font-size: .85rem; text-decoration: none; }
+
+header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid #2c3350; }
+header a { color: #818cf8; margin-right: 1rem; text-decoration: none; }
+button.secondary { background: transparent; border: 1px solid #2c3350; color: #9ca3af; }
+
+main { padding: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+
+.panel { background: #171b2e; border: 1px solid #2c3350; border-radius: 12px; padding: 1.2rem; }
+.panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.panel-header h2 { margin: 0; font-size: 1rem; }
+
+.item-row { display: flex; justify-content: space-between; align-items: center; padding: .6rem; border: 1px solid #2c3350; border-radius: 8px; margin-bottom: .5rem; cursor: pointer; }
+.item-row.active { border-color: #818cf8; background: #1c2140; }
+.item-row .actions button { margin-left: .4rem; padding: .3rem .6rem; font-size: .8rem; }
+
+.form-box { background: #0f1222; border: 1px solid #2c3350; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+.form-box input, .form-box select, .form-box textarea {
+  width: 100%; padding: .5rem; margin-bottom: .5rem; border-radius: 6px; border: 1px solid #2c3350; background: #171b2e; color: #e5e7eb;
+}
+.form-box label { font-size: .8rem; color: #9ca3af; display: block; margin-bottom: .2rem; }
+.choice-input-row { display: flex; gap: .4rem; align-items: center; margin-bottom: .4rem; }
+.choice-input-row input[type=text] { flex: 1; margin-bottom: 0; }

@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: belajar3d-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: belajar3d
+      POSTGRES_USER: belajar3d
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - belajar3d_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U belajar3d"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: belajar3d
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://belajar3d:${POSTGRES_PASSWORD}@postgres:5432/belajar3d
+      JWT_SECRET: ${JWT_SECRET}
+      TEACHER_EMAIL: ${TEACHER_EMAIL}
+      TEACHER_PASSWORD: ${TEACHER_PASSWORD}
+      PORT: "5020"
+    ports:
+      - "5020:5020"
+
+volumes:
+  belajar3d_pgdata:

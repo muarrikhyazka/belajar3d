@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+  <title>Belajar3D</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div id="hud">
+    <div id="hud-top">
+      <div id="hud-level"></div>
+      <div id="hud-xp-bar"><div id="hud-xp-fill"></div></div>
+    </div>
+    <div id="hud-hint"></div>
+  </div>
+
+  <div id="nickname-screen" class="overlay">
+    <div class="panel">
+      <h1>🎮 Belajar3D</h1>
+      <p>Jelajahi kota, masuk gedung mapel, jawab soal dari gurumu!</p>
+      <input id="nickname-input" placeholder="Nama panggilanmu" maxlength="20" />
+      <button id="nickname-start">▶ Main</button>
+      <a href="/teacher.html" class="teacher-link">👩‍🏫 Saya Guru</a>
+    </div>
+  </div>
+
+  <div id="quiz-screen" class="overlay hidden">
+    <div class="panel quiz-panel">
+      <div id="quiz-subject"></div>
+      <div id="quiz-progress"></div>
+      <div id="quiz-prompt"></div>
+      <div id="quiz-choices"></div>
+      <div id="quiz-feedback"></div>
+      <button id="quiz-next" class="hidden">Lanjut ➜</button>
+      <button id="quiz-close" class="secondary">✕ Keluar</button>
+    </div>
+  </div>
+
+  <div id="result-screen" class="overlay hidden">
+    <div class="panel">
+      <h2 id="result-title"></h2>
+      <div id="result-score"></div>
+      <div id="result-xp"></div>
+      <button id="result-close">Kembali ke Kota</button>
+    </div>
+  </div>
+
+  <canvas id="scene"></canvas>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

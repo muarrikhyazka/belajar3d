@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.env
+.env
+backend-go/belajar3d
+web/node_modules/
+web/dist/
